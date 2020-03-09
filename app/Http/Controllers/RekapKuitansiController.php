@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\RekapKuitansi;
 use Illuminate\Http\Request;
+use DB;
 
 class RekapKuitansiController extends Controller
 {
@@ -12,12 +13,26 @@ class RekapKuitansiController extends Controller
     	$kuitansi = RekapKuitansi::all();
         return view('kuitansi.index', compact('kuitansi'));
     }
-
-    public function get()
+    
+    public function boom()
     {
-        $kuitansi= RekapKuitansi::select('kuitansi.*');
+        // template untuk join gunakan cara ini namamodel::join saja
+        // bisa menggunakan of atau pun collection
+        $kuitansi = 
+        RekapKuitansi::join('muzakki', 'kuitansi.muzakki_id', '=', 'muzakki.id')
+        ->join('amil', 'kuitansi.amil_id', '=', 'amil.id')
+        ->join('petugas', 'kuitansi.petugas_id', '=', 'petugas.id')
+        ->join('zakat', 'kuitansi.zakat_id', '=', 'zakat.id')
+        ->join('jenis_ziswaf', 'zakat.jenis_ziswaf', '=', 'jenis_ziswaf.id')
+        ->join('satuan_ziswaf', 'zakat.satuan_ziswaf', '=', 'satuan_ziswaf.id')
+        ->select('kuitansi.tgl_setor','kuitansi.number_kuitansi','kuitansi.nama_penyetor','kuitansi.alamat_penyetor','muzakki.nama_muzakki', 'amil.nama_amil', 'petugas.nama_petugas','zakat.nilai_ziswaf', 'satuan_ziswaf.satuan_ziswaf', 'jenis_ziswaf.jenis_ziswaf')
+        ->get();
+
+        // $kuitansi= RekapKuitansi::select('kuitansi.*');
+        // print_r($kuitansi);
+        // dd($kuitansi);
         
-        return \DataTables::eloquent($kuitansi)
+        return \DataTables::collection($kuitansi) 
         ->addColumn('tgl_setor', function($s){
             return $s->tgl_setor;
 
@@ -34,30 +49,21 @@ class RekapKuitansiController extends Controller
             return $s->alamat_penyetor;
             
         })
+
+        // >>>>> dari sini udah manggil id dari foreign lain 
         ->addColumn('nama_muzakki', function($s){
             return $s->nama_muzakki;
             
         })
-        ->addColumn('nama_amil', function($s){
-            return $s->nama_amil;
+        ->addColumn('name_amil', function($s){
+            return $s->name_amil;
             
         })
-        ->addColumn('nama_petugas', function($s){
-            return $s->nama_petugas;
+        ->addColumn('name_petugas', function($s){
+            return $s->name_petugas;
             
         })
-        ->addColumn('jenis_ziswaf', function($s){
-            return $s->jenis_ziswaf;
-            
-        })
-        ->addColumn('nilai_ziswaf', function($s){
-            return $s->nilai_ziswaf;
-            
-        })
-        ->addColumn('satuan_ziswaf', function($s){
-            return $s->satuan_ziswaf;
-            
-        })
+        
         ->addColumn('action', function($s){
             return '<a href="/kuitansi/'.$s->id.'/edit" class="btn btn-warning btn-sm">Edit</a>';
         })
@@ -65,6 +71,6 @@ class RekapKuitansiController extends Controller
             return '<a href="/kuitansi/'.$s->id.'/delete" class="btn btn-danger btn-sm delete" id ='.$s->id.' >Delete</a>';
         })
         ->rawColumns(['delete','action','nama_petugas'])
-        ->toJson();
+        ->make();
     }
 }

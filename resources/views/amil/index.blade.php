@@ -100,7 +100,6 @@
             {data: 'nama_amil', name: 'nama_amil'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'delete', name: 'delete', orderable: false, searchable: false}
-
         ]
 	});
 } );

@@ -35,10 +35,8 @@
 										<th class="col-md-8">Nama Muzakki</th>
 										<th class="col-md-8">Nama Amil</th>
 										<th class="col-md-8">Nama Petugas</th>
-										<th class="col-md-8">Zakat</th>
-										<th class="col-md-8">Nilai Zakat</th>
-										<th class="col-md-8">Satuan Zakat</th>
 										<th>Aksi</th>
+										<th></th>
 										<th></th>
 									</tr>
 								</thead>
@@ -134,9 +132,6 @@
             {data: 'nama_muzakki', name: 'nama_muzakki'},
             {data: 'nama_amil', name: 'nama_amil'},
             {data: 'nama_petugas', name: 'nama_petugas'},
-            {data: 'jenis_ziswaf', name: 'jenis_ziswaf'},
-            {data: 'nilai_ziswaf', name: 'nilai_ziswaf'},
-            {data: 'satuan_ziswaf', name: 'satuan_ziswaf'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'delete', name: 'delete', orderable: false, searchable: false}
 

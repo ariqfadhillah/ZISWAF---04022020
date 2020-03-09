@@ -74,7 +74,7 @@ Route::get('/','PetugasController@index');
 // Rekap Kuitansi ZISWAF Featured
 	Route::get('/kuitansi','RekapKuitansiController@index');
 	Route::get('getdatakuitansi',[
-	'uses' => 'RekapKuitansiController@get',
+	'uses' => 'RekapKuitansiController@boom',
 	'as' => 'ajax.5'
 	]);
 	Route::post('/kuitansi/create','RekapKuitansiController@create');
