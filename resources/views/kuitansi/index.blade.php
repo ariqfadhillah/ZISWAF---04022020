@@ -64,7 +64,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Tambah Ziswaf</h5>
+						<h5 class="modal-title">Tambah Kuitansi</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -72,12 +72,13 @@
 					<div class="modal-body">
 						<form action="/satuan/create" method="post" enctype="multipart/form-data">
 							{{csrf_field()}}
+
 							<div class="form-group{{$errors->has('number_kuitansi') ? ' has-error' : ''}}">
-										<label for="exampleInputEmail1">Nomer Kuitansi</label>
-									  <input class="form-control" name="number_kuitansi" type="number" min="10000" max="" step="1" placeholder="Masukan Number Kuitansi"/>
-										@if($errors->has('number_kuitansi'))
-										<span class="help-block">{{$errors->first('number_kuitansi')}}</span>
-										@endif
+								<label for="exampleInputEmail1">Nomer Kuitansi</label>
+								<input class="form-control" name="number_kuitansi" type="number" min="10000" max="" step="1" placeholder="Masukan Number Kuitansi"/>
+								@if($errors->has('number_kuitansi'))
+								<span class="help-block">{{$errors->first('number_kuitansi')}}</span>
+								@endif
 							</div>
 
 							<div class="form-group{{$errors->has('nama_petugas') ? ' has-error' : ''}} col-md-6">
@@ -135,15 +136,32 @@
 								<span class="help-block">{{$errors->first('satuan_ziswaf')}}</span>
 								@endif
 							</div>
-
+							  
 							<div class="form-group{{$errors->has('nilai_ziswaf') ? ' has-error' : ''}}">
-										<label for="exampleInputEmail1">Nilai Ziswaf</label>
-										<span class="date"> Pilih berdasarkan </span>
-									  <input class="form-control" name="nilai_ziswaf" type="number" min="10000" max="" step="1" placeholder="Masukan Nilai ZISWAF"/>
-										@if($errors->has('nilai_ziswaf'))
+								<h5>Rincian ZISWAF</h5><hr>
+								<label for="exampleInputEmail1">Nilai Ziswaf</label>
+								<input class="form-control" name="nilai_ziswaf" type="number" min="10000" max="" step="1" placeholder="Masukan Nilai ZISWAF"/>
+								@if($errors->has('nilai_ziswaf'))
 
-										<span class="help-block">{{$errors->first('nilai_ziswaf')}}</span>
-										@endif
+								<span class="help-block">{{$errors->first('nilai_ziswaf')}}</span>
+								@endif
+							</div>
+
+							<div class="form-group{{$errors->has('nama_penyetor') ? ' has-error' : ''}}">
+								<h5>Rincian Muzakki</h5><hr>
+								<label for="exampleInputEmail1">Nama Penyetor</label>
+								<input name="nama_penyetor" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Penyetor" value="{{old('nama_penyetor')}}">
+								@if($errors->has('nama_penyetor'))
+								<span class="help-block">{{$errors->first('nama_penyetor')}}</span>
+								@endif
+							</div>
+
+							<div class="form-group{{$errors->has('nama_muzakki') ? ' has-error' : ''}}">
+								<label for="exampleInputEmail1">Atas Nama (Daftar Nama Muzakki)</label>
+								<input name="nama_muzakki" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}">
+								@if($errors->has('nama_muzakki'))
+								<span class="help-block">{{$errors->first('nama_muzakki')}}</span>
+								@endif
 							</div>
 
 						</div>
