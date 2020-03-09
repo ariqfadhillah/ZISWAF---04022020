@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Amil;
+use App\Jenis_Ziswaf;
+use App\Petugas;
 use App\RekapKuitansi;
-use Illuminate\Http\Request;
+use App\Satuan_Ziswaf;
 use DB;
+use Illuminate\Http\Request;
 
 class RekapKuitansiController extends Controller
 {
     public function index()
     {	
-    	$kuitansi = RekapKuitansi::all();
-        return view('kuitansi.index', compact('kuitansi'));
+        $kuitansi = RekapKuitansi::all();
+        $petugas = Petugas::all();
+        $amil = Amil::all();
+        $zakat = Jenis_Ziswaf::all();
+    	$satuan = Satuan_Ziswaf::all();
+        return view('kuitansi.index', compact('kuitansi','petugas','amil','zakat','satuan'));
     }
     
     public function boom()

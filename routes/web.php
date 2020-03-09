@@ -81,4 +81,3 @@ Route::get('/','PetugasController@index');
 	Route::get('/kuitansi/{kuitansi}/edit','RekapKuitansiController@edit');
 	Route::post('/kuitansi/{kuitansi}/update','RekapKuitansiController@update');
 	Route::get('/kuitansi/{kuitansi}/delete','RekapKuitansiController@delete');
-

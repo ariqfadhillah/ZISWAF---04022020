@@ -4,6 +4,7 @@ namespace App;
 
 use App\Amil;
 use App\Muzakki;
+use App\Petugas;
 use Illuminate\Database\Eloquent\Model;
 
 class RekapKuitansi extends Model
