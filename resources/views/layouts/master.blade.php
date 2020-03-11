@@ -50,14 +50,13 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
+	<!-- Hariq - @ariq_fadh  Ini Website Laravel Pertama Untuk menuju Sakinah : )-->
 	<!-- Javascript -->
 	<script src="{{asset('admin/assets/vendor/jquery/jquery.min.js')}}"></script>
 	<script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<script src="{{asset('frontend/js/ckeditor.js')}}"></script>
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 	
 	<script>

@@ -30,4 +30,26 @@ class Jenis_ZiswafController extends Controller
         ->rawColumns(['delete','action','nama_petugas'])
         ->toJson();
     }
+        public function create(Request $request)
+        {
+        $jenis_ziswaf = \App\Jenis_Ziswaf::create($request->all());
+        $jenis_ziswaf->save();
+        return redirect('/jenis_ziswaf')->with('sukses','Data berhasil di input');
+        }
+        public function edit(Jenis_Ziswaf $jenis_ziswaf)
+        {
+        return view('jenis_zakat/edit',['jenis_ziswaf' => $jenis_ziswaf]);
+        }
+        public function update(Request $request,Jenis_Ziswaf $jenis_ziswaf)
+        {
+        // dd($request -> all());
+        $jenis_ziswaf->update($request->all());
+        return redirect('/jenis_ziswaf')->with('sukses','Data berhasil di update');
+        }
+        
+        public function delete(Jenis_Ziswaf $jenis_ziswaf)
+        { 
+        $jenis_ziswaf->delete();
+        return redirect('/jenis_ziswaf')->with('sukses','Data berhasil di delete');
+        }
 }

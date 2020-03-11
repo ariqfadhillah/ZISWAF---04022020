@@ -84,11 +84,6 @@ class RekapKuitansiController extends Controller
 
     public function create(Request $request)
     {
-        $this->validate($request, [
-            'number_kuitansi' => 'required|max:255|unique:kuitansi',
-            'nilai_ziswaf' => 'required|email|max:255|',
-            'nama_penyetor' => 'required|min:6',
-        ]);
 
         $kuitansi = new \App\RekapKuitansi;
         $kuitansi->number_kuitansi = $request->number_kuitansi;
@@ -100,7 +95,7 @@ class RekapKuitansiController extends Controller
         $kuitansi->nama_penyetor = $request->nama_penyetor;
         $kuitansi->nama_muzakki = $request->nama_muzakki;
 
-        dd($request->all());
+        print_r($request->all(['nama_muzakki']));
         return ;
     }
 }

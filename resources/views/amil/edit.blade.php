@@ -4,18 +4,17 @@
 @stop
 @section('content')
 <div class="main">
-	<div class="main-content">
-		<h1>Edit data pribadi</b></h1>	
+	<div class="main-content">	
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-body">
-							<form action="/petugas/{{$petugas->id}}/update" method="post" enctype="multipart/form-data">
+							<form action="/amil/{{$amil->id}}/update" method="post" enctype="multipart/form-data">
 								{{csrf_field()}}
 								<div class="form-group{{$errors->has('nama_amil') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Nama Amil</label>
-								<input name="nama_amil" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan nama Amil" value="{{$petugas->nama_amil}}">
+								<input name="nama_amil" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan nama Amil" value="{{$amil->nama_amil}}">
 								@if($errors->has('nama_amil'))
 								<span class="help-block">{{$errors->first('nama_amil')}}</span>
 								@endif

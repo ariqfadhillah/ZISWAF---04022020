@@ -20,7 +20,7 @@
 							<h3 class="panel-title">Data Muzakki</h3>
 							<div class="right">
 								<!-- Button trigger modal -->
-								<button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button>
+								<!-- <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button> -->
 							</div>
 							
 						</div>
@@ -98,8 +98,7 @@
             columns: [
             // or just disable search since it's not really searchable. just add searchable:false
             {data: 'nama_muzakki', name: 'nama_muzakki'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            {data: 'delete', name: 'delete', orderable: false, searchable: false}
+            {data: 'action', name: 'action', orderable: false, searchable: false}
 
         ]
 	});

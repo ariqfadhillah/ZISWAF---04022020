@@ -4,8 +4,7 @@
 @stop
 @section('content')
 <div class="main">
-	<div class="main-content">
-		<h1>Edit data pribadi</b></h1>	
+	<div class="main-content">	
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">

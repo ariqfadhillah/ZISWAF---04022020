@@ -36,6 +36,11 @@ class AmilController extends Controller
         $amil->save();
         return redirect('/amil')->with('sukses','Data berhasil di input');
     }
+    public function edit(Amil $amil)
+  {
+   return view('amil/edit',['amil' => $amil]);
+  }
+
     public function update(Request $request,Amil $amil)
       {
       // dd($request -> all());

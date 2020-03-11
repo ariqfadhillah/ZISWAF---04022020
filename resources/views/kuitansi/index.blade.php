@@ -73,7 +73,7 @@
 						<form action="/kuitansi/create" method="post" enctype="multipart/form-data">
 							{{csrf_field()}}
 
-							<div class="form-group has-error">
+							<div class="form-group {{$errors->has('number_kuitansi') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Nomer Kuitansi</label>
 								<input class="form-control" name="number_kuitansi" type="number" min="10000" max="" step="1" placeholder="Masukan Number Kuitansi"/>
 								@if($errors->has('number_kuitansi'))
@@ -83,7 +83,7 @@
 
 							<div class="form-group{{$errors->has('nama_petugas') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Petugas Rekap</label>
-								<select name="nama_petugas" id="inputState" class="form-control">
+								<select name="nama_petugas" class="form-control">
 									@foreach($petugas as $id => $value)
 									<option value="{{ $value->nama_petugas }}">
 										{{ $value->nama_petugas }}
@@ -97,7 +97,7 @@
 
 							<div class="form-group{{$errors->has('nama_amil') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Petugas Amil</label>
-								<select name="nama_amil" id="inputState" class="form-control">
+								<select name="nama_amil" class="form-control">
 									@foreach($amil as $id => $value)
 									<option value="{{ $value->nama_amil }}">
 										{{ $value->nama_amil }}
@@ -111,7 +111,7 @@
 
 							<div class="form-group{{$errors->has('jenis_ziswaf') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Pilih Zakat</label>
-								<select name="jenis_ziswaf" id="inputState" class="form-control">
+								<select name="jenis_ziswaf" class="form-control">
 									@foreach($zakat as $id => $value)
 									<option value="{{ $value->jenis_ziswaf }}">
 										{{ $value->jenis_ziswaf }}
@@ -125,7 +125,7 @@
 
 							<div class="form-group{{$errors->has('satuan_ziswaf') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Pilih Satuan</label>
-								<select id="inputState" class="form-control">
+								<select class="form-control">
 									@foreach($satuan as $id => $value)
 									<option value="{{ $value->id }}">
 										{{ $value->satuan_ziswaf }}
@@ -140,7 +140,7 @@
 							<div class="form-group{{$errors->has('nilai_ziswaf') ? ' has-error' : ''}}">
 								<h5>Rincian ZISWAF</h5><hr>
 								<label for="exampleInputEmail1">Nilai Ziswaf</label>
-								<input class="form-control" name="nilai_ziswaf" type="number" min="10000" max="" step="1" placeholder="Masukan Nilai ZISWAF"/>
+								<input class="form-control" name="nilai_ziswaf" type="number" min="1" max="" step="1" placeholder="Masukan Nilai ZISWAF"/>
 								@if($errors->has('nilai_ziswaf'))
 
 								<span class="help-block">{{$errors->first('nilai_ziswaf')}}</span>

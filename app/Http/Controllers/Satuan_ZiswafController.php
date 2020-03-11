@@ -30,4 +30,26 @@ class Satuan_ZiswafController extends Controller
         ->rawColumns(['delete','action','nama_petugas'])
         ->toJson();
     }
+    public function create(Request $request)
+    {
+        $satuan_ziswaf = \App\Satuan_Ziswaf::create($request->all());
+        $satuan_ziswaf->save();
+        return redirect('/satuan_ziswaf')->with('sukses','Data berhasil di input');
+    }
+    public function edit(Satuan_Ziswaf $satuan_ziswaf)
+    {
+     return view('satuan_zakat/edit',['satuan_ziswaf' => $satuan_ziswaf]);
+ }
+ public function update(Request $request,Satuan_Ziswaf $satuan_ziswaf)
+ {
+      // dd($request -> all());
+     $satuan_ziswaf->update($request->all());
+     return redirect('/satuan_ziswaf')->with('sukses','Data berhasil di update');
+ }
+
+ public function delete(Satuan_Ziswaf $satuan_ziswaf)
+ { 
+  $satuan_ziswaf->delete();
+  return redirect('/satuan_ziswaf')->with('sukses','Data berhasil di delete');
+}
 }

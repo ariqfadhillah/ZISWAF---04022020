@@ -62,7 +62,7 @@
 							{{csrf_field()}}
 							<div class="form-group{{$errors->has('nama_petugas') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Nama Petugas Rekap</label>
-								<input name="nama_petugas" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Petugas Rekap" value="{{old('nama_petugas')}}">
+								<input name="nama_petugas" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Masukan Nama Petugas Rekap" value="{{old('nama_petugas')}}">
 								@if($errors->has('nama_petugas'))
 								<span class="help-block">{{$errors->first('nama_petugas')}}</span>
 								@endif
@@ -70,7 +70,7 @@
 
 							<div class="form-group{{$errors->has('email') ? ' has-error' : ''}}">
 								<label for="exampleInputPassword1">Email</label>
-								<input name="email" type="email" class="form-control" id="exampleInputPassword1" aria-describedby="emailHelp" placeholder="Email" value="{{old('email')}}">
+								<input name="email" type="email" class="form-control"aria-describedby="emailHelp" placeholder="Email" value="{{old('email')}}">
 								@if($errors->has('email'))
 								<span class="help-block">{{$errors->first('email')}}</span>
 								@endif
@@ -78,7 +78,7 @@
 
 							<div class="form-group{{$errors->has('password') ? ' has-error' : ''}}">
 								<label for="exampleInputPassword1">Password</label>
-								<input name="password" type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp" placeholder="Password" value="{{old('password')}}" required>
+								<input name="password" type="password" class="form-control"aria-describedby="passwordHelp" placeholder="Password" value="{{old('password')}}" required>
 								@if($errors->has('password'))
 								<span class="help-block">{{$errors->first('password')}}</span>
 								@endif

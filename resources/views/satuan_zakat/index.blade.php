@@ -63,7 +63,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form action="/satuan/create" method="post" enctype="multipart/form-data">
+								<form action="/satuan_ziswaf/create" method="post" enctype="multipart/form-data">
 									{{csrf_field()}}
 									<div class="form-group{{$errors->has('satuan_ziswaf') ? ' has-error' : ''}}">
 										<label for="exampleInputEmail1">Satuan ZISWAF</label>
