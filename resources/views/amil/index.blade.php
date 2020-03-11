@@ -28,7 +28,7 @@
 							<table class="table table-hover" id="tables">
 								<thead>
 									<tr>
-										<th class="col-md-8">Nama Amil</th>
+										<th class="col-md-8">Nama Petugas Amil</th>
 										<th>Aksi</th>
 										<th></th>
 									</tr>
@@ -63,7 +63,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form action="/satuan/create" method="post" enctype="multipart/form-data">
+								<form action="/amil/create" method="post" enctype="multipart/form-data">
 									{{csrf_field()}}
 									<div class="form-group{{$errors->has('nama_amil') ? ' has-error' : ''}}">
 										<label for="exampleInputEmail1">Nama Amil</label>

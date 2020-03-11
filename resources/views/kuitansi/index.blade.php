@@ -70,10 +70,10 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="/satuan/create" method="post" enctype="multipart/form-data">
+						<form action="/kuitansi/create" method="post" enctype="multipart/form-data">
 							{{csrf_field()}}
 
-							<div class="form-group{{$errors->has('number_kuitansi') ? ' has-error' : ''}}">
+							<div class="form-group has-error">
 								<label for="exampleInputEmail1">Nomer Kuitansi</label>
 								<input class="form-control" name="number_kuitansi" type="number" min="10000" max="" step="1" placeholder="Masukan Number Kuitansi"/>
 								@if($errors->has('number_kuitansi'))
@@ -83,9 +83,9 @@
 
 							<div class="form-group{{$errors->has('nama_petugas') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Petugas Rekap</label>
-								<select id="inputState" class="form-control">
+								<select name="nama_petugas" id="inputState" class="form-control">
 									@foreach($petugas as $id => $value)
-									<option value="{{ $value->id }}">
+									<option value="{{ $value->nama_petugas }}">
 										{{ $value->nama_petugas }}
 									</option>
 									@endforeach
@@ -97,9 +97,9 @@
 
 							<div class="form-group{{$errors->has('nama_amil') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Petugas Amil</label>
-								<select id="inputState" class="form-control">
+								<select name="nama_amil" id="inputState" class="form-control">
 									@foreach($amil as $id => $value)
-									<option value="{{ $value->id }}">
+									<option value="{{ $value->nama_amil }}">
 										{{ $value->nama_amil }}
 									</option>
 									@endforeach
@@ -111,9 +111,9 @@
 
 							<div class="form-group{{$errors->has('jenis_ziswaf') ? ' has-error' : ''}} col-md-6">
 								<label for="exampleInputEmail1">Pilih Zakat</label>
-								<select id="inputState" class="form-control">
+								<select name="jenis_ziswaf" id="inputState" class="form-control">
 									@foreach($zakat as $id => $value)
-									<option value="{{ $value->id }}">
+									<option value="{{ $value->jenis_ziswaf }}">
 										{{ $value->jenis_ziswaf }}
 									</option>
 									@endforeach
@@ -158,7 +158,8 @@
 
 							<div id="muzakki" class="form-group{{$errors->has('nama_muzakki') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Atas Nama (Daftar Nama Muzakki)</label>
-								<input name="nama_muzakki" type="text" class="form-control" id="exampleInputnama_muzakki" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}"> <br>
+								<input name="nama_muzakki[]" type="text" class="form-control" id="nama_0" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}"> 
+								<small id="tombol_tambah" class="text-muted"><a href="">klik tambah disini</a></small><br><br>
 								@if($errors->has('nama_muzakki'))
 								<span class="help-block">{{$errors->first('nama_muzakki')}}</span>
 								@endif
@@ -207,14 +208,14 @@
 	$(document).ready(function() {
 	var max_fields      = 10; //maximum input boxes allowed
 	var wrapper   		= $("#muzakki"); //Fields wrapper
-	var add_button      = $("#exampleInputnama_muzakki"); //Add button ID
+	var add_button      = $("#tombol_tambah"); //Add button ID
 	
 	var x = 1; //initlal text box count
 	$(add_button).click(function(e){ //on add input button click
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
-			x++; //text box increment
-			$(wrapper).append('<div><input name="nama_muzakki" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+			//text box increment
+			$(wrapper).append('<div><input name="nama_muzakki[]" type="text" class="form-control" id="nama_'+ x++ +'" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}"><a href="#" class="remove_field">Remove</a></div>'); //add input box
 		}
 	});
 	

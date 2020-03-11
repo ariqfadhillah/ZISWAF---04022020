@@ -81,4 +81,26 @@ class RekapKuitansiController extends Controller
         ->rawColumns(['delete','action','nama_petugas'])
         ->make();
     }
+
+    public function create(Request $request)
+    {
+        $this->validate($request, [
+            'number_kuitansi' => 'required|max:255|unique:kuitansi',
+            'nilai_ziswaf' => 'required|email|max:255|',
+            'nama_penyetor' => 'required|min:6',
+        ]);
+
+        $kuitansi = new \App\RekapKuitansi;
+        $kuitansi->number_kuitansi = $request->number_kuitansi;
+        $kuitansi->nama_petugas = $request->nama_petugas;
+        $kuitansi->nama_amil = $request->nama_amil;
+        $kuitansi->jenis_ziswaf = $request->jenis_ziswaf;
+        $kuitansi->satuan_ziswaf = $request->satuan_ziswaf;
+        $kuitansi->nilai_ziswaf = $request->nilai_ziswaf;
+        $kuitansi->nama_penyetor = $request->nama_penyetor;
+        $kuitansi->nama_muzakki = $request->nama_muzakki;
+
+        dd($request->all());
+        return ;
+    }
 }

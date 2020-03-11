@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // tampilan home
-Route::get('/','PetugasController@index');
+Route::get('/','RekapKuitansiController@index');
 
 // Petugas Featured
 	Route::get('/petugas','PetugasController@index');

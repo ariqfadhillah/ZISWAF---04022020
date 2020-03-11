@@ -30,4 +30,22 @@ class AmilController extends Controller
         ->rawColumns(['delete','action','nama_amil'])
         ->toJson();
     }
+    public function create(Request $request)
+    {
+        $amil = \App\Amil::create($request->all());
+        $amil->save();
+        return redirect('/amil')->with('sukses','Data berhasil di input');
+    }
+    public function update(Request $request,Amil $amil)
+      {
+      // dd($request -> all());
+       $amil->update($request->all());
+       return redirect('/amil')->with('sukses','Data berhasil di update');
+      }
+
+      public function delete(Amil $amil)
+     { 
+      $amil->delete();
+      return redirect('/amil')->with('sukses','Data berhasil di delete');
+     }
 }
