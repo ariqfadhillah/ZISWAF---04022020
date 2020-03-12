@@ -15,7 +15,7 @@
 							<h3 class="panel-title">Dengan Nomer Kuitansi (contoh: 20120101)</h3>
 							<div class="right">
 								<!-- Button trigger modal -->
-								<button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button>
+								<!-- <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button> -->
 							</div>
 							
 						</div>
@@ -32,7 +32,8 @@
 								</thead>
 								<tbody>
 								</tbody>
-							</table>
+								
+							</table><h4> Ini Total :</h4>
 						</div>
 					</div>
 				</div>

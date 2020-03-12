@@ -15,15 +15,15 @@ class TransaksiController extends Controller
 
 	public function get()
     {
-        // $transaksi= Transaksi::select('zakat.*');
+        // $transaksi= Transaksi::select('ziswaf.*');
         // karena ini table gabungan. dan perlu yang namanya join.. jadi ga bisa pakai yang diatas kita ini ya
 
-        $transaksi = Transaksi::join('kuitansi', 'kuitansi.id', '=', 'zakat.kuitansi_id')
-        ->join('jenis_ziswaf', 'zakat.jenis_ziswaf', '=', 'jenis_ziswaf.id')
-        ->join('satuan_ziswaf', 'zakat.satuan_ziswaf', '=', 'satuan_ziswaf.id')
+        $transaksi = Transaksi::join('kuitansi', 'kuitansi.id', '=', 'ziswaf.kuitansi_id')
+        ->join('jenis_ziswaf', 'ziswaf.jenis_ziswaf', '=', 'jenis_ziswaf.id')
+        ->join('satuan_ziswaf', 'ziswaf.satuan_ziswaf', '=', 'satuan_ziswaf.id')
         ->select('jenis_ziswaf.jenis_ziswaf',
         	'satuan_ziswaf.satuan_ziswaf',
-        	'zakat.nilai_ziswaf')
+        	'ziswaf.nilai_ziswaf')
         ->get();
         return \DataTables::collection($transaksi)
         ->addColumn('jenis_ziswaf', function($s){
