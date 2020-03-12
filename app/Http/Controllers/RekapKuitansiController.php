@@ -26,14 +26,10 @@ class RekapKuitansiController extends Controller
     {
         // template untuk join gunakan cara ini namamodel::join saja
         // bisa menggunakan of atau pun collection
-        $kuitansi = 
-        RekapKuitansi::join('muzakki', 'kuitansi.muzakki_id', '=', 'muzakki.id')
+        $kuitansi = RekapKuitansi::join('muzakki', 'kuitansi.muzakki_id', '=', 'muzakki.id')
         ->join('amil', 'kuitansi.amil_id', '=', 'amil.id')
         ->join('petugas', 'kuitansi.petugas_id', '=', 'petugas.id')
-        ->join('zakat', 'kuitansi.zakat_id', '=', 'zakat.id')
-        ->join('jenis_ziswaf', 'zakat.jenis_ziswaf', '=', 'jenis_ziswaf.id')
-        ->join('satuan_ziswaf', 'zakat.satuan_ziswaf', '=', 'satuan_ziswaf.id')
-        ->select('kuitansi.tgl_setor','kuitansi.number_kuitansi','kuitansi.nama_penyetor','kuitansi.alamat_penyetor','muzakki.nama_muzakki', 'amil.nama_amil', 'petugas.nama_petugas','zakat.nilai_ziswaf', 'satuan_ziswaf.satuan_ziswaf', 'jenis_ziswaf.jenis_ziswaf')
+        ->select('kuitansi.tgl_setor','kuitansi.number_kuitansi','kuitansi.nama_penyetor','kuitansi.alamat_penyetor','muzakki.nama_muzakki', 'amil.nama_amil', 'petugas.nama_petugas')
         ->get();
 
         // $kuitansi= RekapKuitansi::select('kuitansi.*');
@@ -46,8 +42,8 @@ class RekapKuitansiController extends Controller
 
         })
         ->addColumn('number_kuitansi', function($s){
-            return $s->number_kuitansi;
-            
+            // return '<a href="/transaksi/'.$s->number_kuitansi.'/edit">'.$s->number_kuitansi.'</a>';
+            return '<a href="/transaksi">'.$s->number_kuitansi.'</a>';
         })
         ->addColumn('nama_penyetor', function($s){
             return $s->nama_penyetor;
@@ -78,7 +74,7 @@ class RekapKuitansiController extends Controller
         ->editColumn('delete', function($s){
             return '<a href="/kuitansi/'.$s->id.'/delete" class="btn btn-danger btn-sm delete" id ='.$s->id.' >Delete</a>';
         })
-        ->rawColumns(['delete','action','nama_petugas'])
+        ->rawColumns(['delete','action','nama_petugas','name_amil','nama_muzakki','alamat_penyetor','nama_penyetor','number_kuitansi','tgl_setor'])
         ->make();
     }
 
@@ -95,7 +91,7 @@ class RekapKuitansiController extends Controller
         $kuitansi->nama_penyetor = $request->nama_penyetor;
         $kuitansi->nama_muzakki = $request->nama_muzakki;
 
-        print_r($request->all(['nama_muzakki']));
+        dd($request->all([]));
         return ;
     }
 }

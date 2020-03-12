@@ -81,3 +81,14 @@ Route::get('/','RekapKuitansiController@index');
 	Route::get('/kuitansi/{kuitansi}/edit','RekapKuitansiController@edit');
 	Route::post('/kuitansi/{kuitansi}/update','RekapKuitansiController@update');
 	Route::get('/kuitansi/{kuitansi}/delete','RekapKuitansiController@delete');
+
+// Transaksi Jenis Ziswaf Featured
+	Route::get('/transaksi','TransaksiController@index');
+	Route::get('getdatatransaksi',[
+	'uses' => 'TransaksiController@get',
+	'as' => 'ajax.6'
+	]);
+	Route::post('/transaksi/create','TransaksiController@create');
+	Route::get('/transaksi/{transaksi}/edit','TransaksiController@edit');
+	Route::post('/transaksi/{transaksi}/update','TransaksiController@update');
+	Route::get('/transaksi/{transaksi}/delete','TransaksiController@delete');

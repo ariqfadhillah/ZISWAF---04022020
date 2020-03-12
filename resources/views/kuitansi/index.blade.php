@@ -73,7 +73,7 @@
 						<form action="/kuitansi/create" method="post" enctype="multipart/form-data">
 							{{csrf_field()}}
 
-							<div class="form-group {{$errors->has('number_kuitansi') ? ' has-error' : ''}} col-md-6">
+							<div class="form-group {{$errors->has('number_kuitansi') ? ' has-error' : ''}} ">
 								<label for="exampleInputEmail1">Nomer Kuitansi</label>
 								<input class="form-control" name="number_kuitansi" type="number" min="10000" max="" step="1" placeholder="Masukan Number Kuitansi"/>
 								@if($errors->has('number_kuitansi'))
@@ -109,46 +109,50 @@
 								@endif
 							</div>
 
-							<div class="form-group{{$errors->has('jenis_ziswaf') ? ' has-error' : ''}} col-md-6">
-								<label for="exampleInputEmail1">Pilih Zakat</label>
-								<select name="jenis_ziswaf" class="form-control">
-									@foreach($zakat as $id => $value)
-									<option value="{{ $value->jenis_ziswaf }}">
-										{{ $value->jenis_ziswaf }}
-									</option>
-									@endforeach
-								</select>
-								@if($errors->has('jenis_ziswaf'))
-								<span class="help-block">{{$errors->first('jenis_ziswaf')}}</span>
-								@endif
-							</div>
+							<!-- Ini untuk rinciann ZIswaf Dinamic form -->
+							<div id="tombols">
+							<hr><h5>Rincian ZISWAF</h5><hr>
+								<div class="form-group{{$errors->has('jenis_ziswaf') ? ' has-error' : ''}}">
 
-							<div class="form-group{{$errors->has('satuan_ziswaf') ? ' has-error' : ''}} col-md-6">
-								<label for="exampleInputEmail1">Pilih Satuan</label>
-								<select class="form-control">
-									@foreach($satuan as $id => $value)
-									<option value="{{ $value->id }}">
-										{{ $value->satuan_ziswaf }}
-									</option>
-									@endforeach
-								</select>
-								@if($errors->has('satuan_ziswaf'))
-								<span class="help-block">{{$errors->first('satuan_ziswaf')}}</span>
-								@endif
-							</div>
-							  
-							<div class="form-group{{$errors->has('nilai_ziswaf') ? ' has-error' : ''}}">
-								<h5>Rincian ZISWAF</h5><hr>
-								<label for="exampleInputEmail1">Nilai Ziswaf</label>
-								<input class="form-control" name="nilai_ziswaf" type="number" min="1" max="" step="1" placeholder="Masukan Nilai ZISWAF"/>
-								@if($errors->has('nilai_ziswaf'))
+									<label for="exampleInputEmail1">Pilih Jenis ZISWAF</label>
+									<select name="jenis_ziswaf" class="form-control" id="jenis_ziswaf[]">
+										@foreach($zakat as $id => $value)
+										<option value="{{ $value->jenis_ziswaf }}">
+											{{ $value->jenis_ziswaf }}
+										</option>
+										@endforeach
+									</select>
+									@if($errors->has('jenis_ziswaf'))
+									<span class="help-block">{{$errors->first('jenis_ziswaf')}}</span>
+									@endif
+								</div>
+								
+								<div class="form-group{{$errors->has('nilai_ziswaf') ? ' has-error' : ''}} col-md-6">
+									<label for="exampleInputEmail1">Nilai ZISWAF</label>
+									<input id="nilai_ziswaf[]" class="form-control" name="nilai_ziswaf" type="number" min="1" max="" step="1" placeholder="Masukan Nilai ZISWAF"/>
+									@if($errors->has('nilai_ziswaf'))
+									
+									<span class="help-block">{{$errors->first('nilai_ziswaf')}}</span>
+									@endif
+								</div>
 
-								<span class="help-block">{{$errors->first('nilai_ziswaf')}}</span>
-								@endif
+								<div class="form-group{{$errors->has('satuan_ziswaf') ? ' has-error' : ''}} col-md-6">
+									<label for="exampleInputEmail1">Pilih Satuan</label>
+									<select name="satuan_ziswaf" class="form-control" id="nama_[]">
+										@foreach($satuan as $id => $value)
+										<option value="{{ $value->satuan_ziswaf }}">
+											{{ $value->satuan_ziswaf }}
+										</option>
+										@endforeach
+									</select>
+									@if($errors->has('satuan_ziswaf'))
+									<span class="help-block">{{$errors->first('satuan_ziswaf')}}</span>
+									@endif
+								</div>
 							</div>
-
+							  <small id="tombol" class="text-muted"><a href="#">klik tambah disini</a></small><br><br>
+							<hr><h5>Rincian Muzakki</h5><hr>	
 							<div class="form-group{{$errors->has('nama_penyetor') ? ' has-error' : ''}}">
-								<h5>Rincian Muzakki</h5><hr>
 								<label for="exampleInputEmail1">Nama Penyetor</label>
 								<input name="nama_penyetor" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Penyetor" value="{{old('nama_penyetor')}}">
 								@if($errors->has('nama_penyetor'))
@@ -159,7 +163,7 @@
 							<div id="muzakki" class="form-group{{$errors->has('nama_muzakki') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Atas Nama (Daftar Nama Muzakki)</label>
 								<input name="nama_muzakki[]" type="text" class="form-control" id="nama_0" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}"> 
-								<small id="tombol_tambah" class="text-muted"><a href="">klik tambah disini</a></small><br><br>
+								<small id="tombol_tambah" class="text-muted"><a href="#">klik tambah disini</a></small><br><br>
 								@if($errors->has('nama_muzakki'))
 								<span class="help-block">{{$errors->first('nama_muzakki')}}</span>
 								@endif
@@ -219,6 +223,27 @@
 		}
 	});
 	
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+		e.preventDefault(); $(this).parent('div').remove(); x--;
+	})
+});
+</script>
+
+<script>
+	$(document).ready(function() {
+	var max_fields      = 10; //maximum input boxes allowed
+	var wrapper   		= $("#tombols"); //Fields wrapper
+	var add_button      = $("#tombol"); //Add button ID
+	var large = '<div class="form-group{{$errors->has('jenis_ziswaf') ? ' has-error' : ''}}"><label for="exampleInputEmail1">Pilih Jenis ZISWAF</label><select name="jenis_ziswaf" class="form-control">@foreach($zakat as $id => $value)<option value="{{ $value->jenis_ziswaf }}">{{ $value->jenis_ziswaf }}</option>@endforeach </select> @if($errors->has('jenis_ziswaf')) <span class="help-block">{{$errors->first('jenis_ziswaf')}}</span> @endif </div> <div class="form-group{{$errors->has('nilai_ziswaf') ? ' has-error' : ''}} col-md-6"> <label for="exampleInputEmail1">Nilai ZISWAF</label> <input class="form-control" name="nilai_ziswaf" type="number" min="1" max="" step="1" placeholder="Masukan Nilai ZISWAF"/> @if($errors->has('nilai_ziswaf')) <span class="help-block">{{$errors->first('nilai_ziswaf')}}</span> @endif </div> <div class="form-group{{$errors->has('satuan_ziswaf') ? ' has-error' : ''}} col-md-6"> <label for="exampleInputEmail1">Pilih Satuan</label> <select class="form-control"> @foreach($satuan as $id => $value) <option value="{{ $value->id }}"> {{ $value->satuan_ziswaf }} </option> @endforeach </select> @if($errors->has('satuan_ziswaf')) <span class="help-block">{{$errors->first('satuan_ziswaf')}}</span> @endif </div>';
+	var x = 1; //initlal text box count
+	$(add_button).click(function(e){ //on add input button click
+		e.preventDefault();
+		if(x < max_fields){ //max input box allowed
+			x++ //text box increment
+			$(wrapper).append(large);//add input box
+		}
+	});
+
 	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
 		e.preventDefault(); $(this).parent('div').remove(); x--;
 	})
