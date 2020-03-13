@@ -5,6 +5,7 @@ namespace App;
 use App\Amil;
 use App\Muzakki;
 use App\Petugas;
+use App\Transaksi;
 use Illuminate\Database\Eloquent\Model;
 
 class RekapKuitansi extends Model
@@ -24,10 +25,10 @@ class RekapKuitansi extends Model
       // artinya model ini dimiliki oleh class yang didlm kurung
     }
 
-    public function zakat()
+    public function ziswaf()
     {
-      return $this->belongsToMany(Zakat::class);
-      // artinya model ini dimiliki oleh class yang didlm kurung
+      return $this->hasMany(Transaksi::class);
+      // artinya model ini memiliki banyak data dari class yang didalam kurung
     }
 
     public function petugas()

@@ -79,19 +79,21 @@ class RekapKuitansiController extends Controller
     }
 
     public function create(Request $request)
-    {
-
-        $kuitansi = new \App\RekapKuitansi;
-        $kuitansi->number_kuitansi = $request->number_kuitansi;
-        $kuitansi->nama_petugas = $request->nama_petugas;
-        $kuitansi->nama_amil = $request->nama_amil;
-        $kuitansi->jenis_ziswaf = $request->jenis_ziswaf;
-        $kuitansi->satuan_ziswaf = $request->satuan_ziswaf;
-        $kuitansi->nilai_ziswaf = $request->nilai_ziswaf;
-        $kuitansi->nama_penyetor = $request->nama_penyetor;
-        $kuitansi->nama_muzakki = $request->nama_muzakki;
-
-        dd($request->all([]));
-        return ;
+    { 
+            foreach($request->nama_muzakki as $muzaki){
+                $kuitansi = new \App\RekapKuitansi;
+                $kuitansi->number_kuitansi = $request->number_kuitansi;
+                $kuitansi->petugas_id = $request->petugas_id;
+                $kuitansi->amil_id = $request->amil_id;
+                $kuitansi->jenis_ziswaf = $request->jenis_ziswaf;
+                $kuitansi->satuan_ziswaf = $request->satuan_ziswaf;
+                $kuitansi->nilai_ziswaf = $request->nilai_ziswaf;
+                $kuitansi->nama_penyetor = $request->nama_penyetor;
+                $kuitansi->nama_muzakki = $muzaki;
+                $kuitansi->save();
+            }
+        
+        // dd($request->all([]));
+        return redirect('/kuitansi')->with('sukses','Data berhasil di input');
     }
 }

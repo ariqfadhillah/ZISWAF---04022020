@@ -85,7 +85,7 @@
 								<label for="exampleInputEmail1">Petugas Rekap</label>
 								<select name="nama_petugas" class="form-control">
 									@foreach($petugas as $id => $value)
-									<option value="{{ $value->nama_petugas }}">
+									<option value="{{ $value->petugas_id }}">
 										{{ $value->nama_petugas }}
 									</option>
 									@endforeach
@@ -99,7 +99,7 @@
 								<label for="exampleInputEmail1">Petugas Amil</label>
 								<select name="nama_amil" class="form-control">
 									@foreach($amil as $id => $value)
-									<option value="{{ $value->nama_amil }}">
+									<option value="{{ $value->amil_id }}">
 										{{ $value->nama_amil }}
 									</option>
 									@endforeach

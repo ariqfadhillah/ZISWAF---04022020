@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// tampilan home login
+Route::get('/login','AuthController@login')->name('login');
+Route::post('/postlogin','AuthController@postlogin');
+Route::get('/logout','AuthController@logout');
+
+Route::group(['middleware' => ['auth','checkRole:petugas']],function(){
+
 // tampilan home
 Route::get('/','RekapKuitansiController@index');
 
@@ -26,7 +33,9 @@ Route::get('/','RekapKuitansiController@index');
 	Route::get('/petugas/{petugas}/edit','PetugasController@edit');
 	Route::post('/petugas/{petugas}/update','PetugasController@update');
 	Route::get('/petugas/{petugas}/delete','PetugasController@delete');
+});	
 
+Route::group(['middleware' => ['auth','checkRole:admin,user']],function(){
 // Master Satuan ZISWAF Featured
 	Route::get('/satuan_ziswaf','Satuan_ZiswafController@index');
 	Route::get('getdatasatuan',[
@@ -37,6 +46,7 @@ Route::get('/','RekapKuitansiController@index');
 	Route::get('/satuan_ziswaf/{satuan_ziswaf}/edit','Satuan_ZiswafController@edit');
 	Route::post('/satuan_ziswaf/{satuan_ziswaf}/update','Satuan_ZiswafController@update');
 	Route::get('/satuan_ziswaf/{satuan_ziswaf}/delete','Satuan_ZiswafController@delete');
+
 
 // Master Jenis_ZISWAF Featured
 	Route::get('/jenis_ziswaf','Jenis_ZiswafController@index');
@@ -92,3 +102,4 @@ Route::get('/','RekapKuitansiController@index');
 	Route::get('/transaksi/{transaksi}/edit','TransaksiController@edit');
 	Route::post('/transaksi/{transaksi}/update','TransaksiController@update');
 	Route::get('/transaksi/{transaksi}/delete','TransaksiController@delete');
+});
