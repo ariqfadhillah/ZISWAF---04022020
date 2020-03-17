@@ -75,7 +75,9 @@
 
 							<div class="form-group {{$errors->has('number_kuitansi') ? ' has-error' : ''}} ">
 								<label for="exampleInputEmail1">Nomer Kuitansi</label>
+								
 								<input class="form-control" name="number_kuitansi" type="number" min="10000" max="" step="1" placeholder="Masukan Number Kuitansi" required>
+
 								@if($errors->has('number_kuitansi'))
 								<span class="help-block">{{$errors->first('number_kuitansi')}}</span>
 								@endif

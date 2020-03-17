@@ -15,7 +15,7 @@ class AmilController extends Controller
 
    public function get()
    {
-      $amil           = Amil::select('amil.*');
+      $amil = Amil::select('amil.*');
       return \DataTables::eloquent($amil)
       ->addColumn('nama_amil', function($s){
         return $s->nama_amil;

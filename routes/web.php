@@ -90,7 +90,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']],function(){
 	Route::post('/kuitansi/create','RekapKuitansiController@create');
 	Route::get('/kuitansi/{kuitansi}/edit','RekapKuitansiController@edit');
 	Route::post('/kuitansi/{kuitansi}/update','RekapKuitansiController@update');
-	Route::get('/kuitansi/{kuitansi}/delete','RekapKuitansiController@delete');
+	Route::get('/kuitansi/{id}','RekapKuitansiController@delete');
 
 // Transaksi Jenis Ziswaf Featured
 	Route::get('/transaksi','TransaksiController@index');
