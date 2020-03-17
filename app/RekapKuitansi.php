@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class RekapKuitansi extends Model
 {
     protected $table = 'kuitansi';
-    protected $fillable = ['tgl_setor','number_kuitansi','nama_penyetor','alamat_penyetor','muzakki_id','amil_id','zakat_id','petugas_id','user_id'];
+    protected $fillable = ['id','tgl_setor','number_kuitansi','nama_penyetor','alamat_penyetor','muzakki_id','amil_id','petugas_id'];
 
     public function muzakki()
     {
