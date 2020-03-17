@@ -22,4 +22,12 @@ class Petugas extends Model
     	// artinya model ini dimiliki oleh class yang didlm kurung
     	// digunain ditable penyambung (yang punya foreign key)
  }
+ public function getAvatar()
+    {
+    	if(!$this->avatar){
+    		return asset('images/default.jpg');
+    	}
+
+    	return asset('images/'.$this->avatar);
+    }
 }

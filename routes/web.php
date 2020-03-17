@@ -35,7 +35,7 @@ Route::get('/','RekapKuitansiController@index');
 	Route::get('/petugas/{petugas}/delete','PetugasController@delete');
 });	
 
-Route::group(['middleware' => ['auth','checkRole:admin,user']],function(){
+Route::group(['middleware' => ['auth','checkRole:admin,petugas']],function(){
 // Master Satuan ZISWAF Featured
 	Route::get('/satuan_ziswaf','Satuan_ZiswafController@index');
 	Route::get('getdatasatuan',[
