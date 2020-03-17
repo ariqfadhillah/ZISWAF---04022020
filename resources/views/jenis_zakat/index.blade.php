@@ -28,7 +28,7 @@
 							<table class="table table-hover" id="tables">
 								<thead>
 									<tr>
-										<th class="col-md-8">Jenis Zakat</th>
+										<th class="col-md-12">Jenis Zakat</th>
 										<th>Aksi</th>
 										<th></th>
 									</tr>

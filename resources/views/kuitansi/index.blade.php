@@ -28,13 +28,13 @@
 							<table class="table table-hover" id="tables">
 								<thead>
 									<tr>
-										<th class="col-md-8">Tgl Setor</th>
-										<th class="col-md-8">Number Kuitansi</th>
-										<th class="col-md-8">Nama Penyetor</th>
-										<th class="col-md-8">Alamat Penyetor</th>
-										<th class="col-md-8">Nama Muzakki</th>
-										<th class="col-md-8">Nama Amil</th>
-										<th class="col-md-8">Nama Petugas</th>
+										<th class="col-md-12">Tgl Setor</th>
+										<th class="col-md-2">Number Kuitansi</th>
+										<th class="col-md-2">Nama Penyetor</th>
+										<th class="col-md-2">Alamat Penyetor</th>
+										<th class="col-md-2">Nama Muzakki</th>
+										<th class="col-md-2">Nama Amil</th>
+										<th class="col-md-2">Nama Petugas</th>
 										<th>Aksi</th>
 										<th></th>
 										<th></th>
@@ -196,6 +196,7 @@
 			responsive: true,
 			serverSide: true,
 			ajax: "{{route('ajax.5')}}",
+			order: [[0,'desc']],
 			columns: [
             // or just disable search since it's not really searchable. just add searchable:false
             {data: 'tgl_setor', name: 'tgl_setor'},
@@ -223,7 +224,7 @@
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			//text box increment
-			$(wrapper).append('<div><input name="nama_muzakki[]" type="text" class="form-control" id="nama-'+ x++ +'" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+			$(wrapper).append('<div><input name="nama_muzakki[]" type="text" class="form-control" id="nama-'+ x++ +'" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}" required><a href="#" class="delete btn-sm btn-danger">cancel here</a></div>'); //add input box
 		}
 	});
 	

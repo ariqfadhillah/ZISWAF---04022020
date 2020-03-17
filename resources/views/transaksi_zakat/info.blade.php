@@ -12,10 +12,12 @@
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">Master Petugas Ziswaf</h3>
+							@foreach($data_fore as $id)
+							<h3 class="panel-title">Dengan Nomer Kuitansi ({{$id->number_kuitansi}})</h3>
+							@endforeach
 							<div class="right">
 								<!-- Button trigger modal -->
-								<button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button>
+								<!-- <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button> -->
 							</div>
 							
 						</div>
@@ -23,14 +25,21 @@
 							<table class="table table-hover" id="tables">
 								<thead>
 									<tr>
-										<th class="col-md-12">Nama Petugas</th>
+										<th class="col-md-2">Tgl Setor</th>
+										<th class="col-md-2">Di Berikan Oleh</th>
+										<th class="col-md-2">Nomer Kuitansi</th>
+										<th class="col-md-2">Jenis Zakat</th>
+										<th class="col-md-2">Bentuk</th>
+										<th class="col-md-2">Nilai</th>
+										<th class="col-md-2">Satuan</th>
 										<th>Aksi</th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
 								</tbody>
-							</table>
+								
+							</table><h4> Ini Total :</h4>
 						</div>
 					</div>
 				</div>
@@ -106,10 +115,16 @@
 			processing: true,
 			responsive: true,
 			serverSide: true,
-			ajax: "{{route('ajax.0')}}",
+			ajax: "{{route('ajax.6')}}",
 			columns: [
             // or just disable search since it's not really searchable. just add searchable:false
-            {data: 'nama_petugas', name: 'nama_petugas', orderable: true, searchable: true },
+            {data: 'tgl_setor', name: 'tgl_setor', orderable: true, searchable: true },
+            {data: 'nama_penyetor', name: 'nama_penyetor', orderable: true, searchable: true },
+            {data: 'number_kuitansi', name: 'number_kuitansi', orderable: true, searchable: true },
+            {data: 'jenis_ziswaf', name: 'jenis_ziswaf', orderable: true, searchable: true },
+            {data: 'bentuk_ziswaf', name: 'bentuk_ziswaf', orderable: true, searchable: true },
+            {data: 'nilai_ziswaf', name: 'nilai_ziswaf', orderable: true, searchable: true },
+            {data: 'satuan_ziswaf', name: 'satuan_ziswaf', orderable: true, searchable: true },
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'delete', name: 'delete', orderable: false, searchable: false}
 

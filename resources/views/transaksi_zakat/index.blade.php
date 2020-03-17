@@ -12,7 +12,8 @@
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">Dengan Nomer Kuitansi (contoh: 20120101)</h3>
+
+							<h3 class="panel-title">Jumlah Transaksi ZISWAF</h3>
 							<div class="right">
 								<!-- Button trigger modal -->
 								<!-- <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button> -->
@@ -23,9 +24,13 @@
 							<table class="table table-hover" id="tables">
 								<thead>
 									<tr>
-										<th class="col-md-8">Jenis Zakat</th>
-										<th class="col-md-8">Nilai Zakat</th>
-										<th class="col-md-8">Satuan Zakat</th>
+										<th class="col-md">Tgl Setor</th>
+										<th class="col-md">Di Berikan Oleh</th>
+										<th class="col-md">Nomer Kuitansi</th>
+										<th class="col-md">Jenis Zakat</th>
+										<th class="col-md">Bentuk</th>
+										<th class="col-md">Nilai</th>
+										<th class="col-md">Satuan</th>
 										<th>Aksi</th>
 										<th></th>
 									</tr>
@@ -110,9 +115,14 @@
 			responsive: true,
 			serverSide: true,
 			ajax: "{{route('ajax.6')}}",
+			order: [[0,'desc']],
 			columns: [
             // or just disable search since it's not really searchable. just add searchable:false
+            {data: 'tgl_setor', name: 'tgl_setor', orderable: true, searchable: true },
+            {data: 'nama_penyetor', name: 'nama_penyetor', orderable: true, searchable: true },
+            {data: 'number_kuitansi', name: 'number_kuitansi', orderable: true, searchable: true },
             {data: 'jenis_ziswaf', name: 'jenis_ziswaf', orderable: true, searchable: true },
+            {data: 'bentuk_ziswaf', name: 'bentuk_ziswaf', orderable: true, searchable: true },
             {data: 'nilai_ziswaf', name: 'nilai_ziswaf', orderable: true, searchable: true },
             {data: 'satuan_ziswaf', name: 'satuan_ziswaf', orderable: true, searchable: true },
             {data: 'action', name: 'action', orderable: false, searchable: false},

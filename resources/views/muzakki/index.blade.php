@@ -28,7 +28,10 @@
 							<table class="table table-hover" id="tables">
 								<thead>
 									<tr>
-										<th class="col-md-8">Nama Muzakki / Atas nama</th>
+										<th class="col-md-3">Tgl Diberikan</th>
+										<th class="col-md-1">Nomer Kuitansi</th>
+										<th class="col-md-3">Nama Pemberi</th>
+										<th class="col-md-3">Nama Muzakki / Atas nama</th>
 										<th>Aksi</th>
 										<th></th>
 									</tr>
@@ -95,8 +98,12 @@
             responsive: true,
             serverSide: true,
             ajax: "{{route('ajax.3')}}",
+            order: [[0,'desc']],
             columns: [
             // or just disable search since it's not really searchable. just add searchable:false
+            {data: 'tgl_setor', name: 'tgl_setor'},
+            {data: 'number_kuitansi', name: 'number_kuitansi'},
+            {data: 'nama_penyetor', name: 'nama_penyetor'},
             {data: 'nama_muzakki', name: 'nama_muzakki'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
 

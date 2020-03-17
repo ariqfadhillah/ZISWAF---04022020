@@ -9,9 +9,9 @@ use App\Petugas;
 use App\RekapKuitansi;
 use App\Satuan_Ziswaf;
 use App\Transaksi;
-use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class RekapKuitansiController extends Controller
@@ -47,7 +47,7 @@ class RekapKuitansiController extends Controller
       })
       ->addColumn('number_kuitansi', function($s){
       // return '<a href ="/transaksi/'.$s->number_kuitansi.'/edit">'.$s->number_kuitansi.'</a>';
-      return '<a href    ="/transaksi/'.$s->number_kuitansi.'/information">'.$s->number_kuitansi.'</a>';
+      return '<a href ="/transaksi/'.$s->number_kuitansi.'/info">'.$s->number_kuitansi.'</a>';
       })
       ->addColumn('nama_penyetor', function($s){
       return $s->nama_penyetor;
@@ -108,11 +108,11 @@ class RekapKuitansiController extends Controller
       $save_muzaki->save();
       
       // membuat tambah id muzakki
-      
+      date_default_timezone_set('Asia/Jakarta');
       $kuitansi                             = new \App\RekapKuitansi;
       $kuitansi->number_kuitansi            = $request->number_kuitansi;
       $kuitansi->petugas_id                 = $request->petugas_id;
-      $kuitansi->tgl_setor                  = date('Y-m-d');
+      $kuitansi->tgl_setor                  =  date('l, d F Y g:i:s A');
       $kuitansi->alamat_penyetor            = "Jakarta";
       $kuitansi->amil_id                    = $request->amil_id;
       $kuitansi->nama_penyetor              = $request->nama_penyetor;
@@ -122,7 +122,9 @@ class RekapKuitansiController extends Controller
       // membuat id kuitansi
       
       $request->request->add(['kuitansi_id' => $kuitansi->id]);
+      // dd($request->request);
       $zakat                                = new \App\Transaksi;
+      $zakat->kuitansi_id                   = $request->kuitansi_id;
       $zakat->jenis_ziswaf_id               = $request->jenis_ziswaf_id;
       $zakat->satuan_ziswaf_id              = $request->satuan_ziswaf_id;
       $zakat->nilai_ziswaf                  = $request->nilai_ziswaf;
@@ -138,7 +140,28 @@ class RekapKuitansiController extends Controller
 
    public function delete($id)
    {  
-      RekapKuitansi::where('number_kuitansi', $id)->delete();
+      // ini saya punya serial number. jadi ane pingin ketika hapus diklik pada nomer yg sama. nanti id muzakki ikut
+      // $muzakki = Muzakki::find($id);
+      // $RekapKuitansi = RekapKuitansi::where($muzakki->id);
+
+      // Logika nya keluarkan get agar semuanya ke cetak
+      // fitur deletenya akan terus dijalankan,hingga perulangan habis
+
+      $rekap = RekapKuitansi::where('number_kuitansi', $id)->get();
+
+      foreach($rekap as $data){
+         $muzakki = Muzakki::find($data->muzakki_id);
+         
+         $data->delete();
+         $muzakki->delete();
+      }
+
+
       return redirect()->back()->with('sukses','Data berhasil di delete');
+   }
+
+   public function edit(Kuitansi $kuitansi)
+   {
+      return view('kuitansi/edit',['kuitansi' => $kuitansi]);
    }
 }

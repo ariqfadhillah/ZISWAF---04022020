@@ -88,6 +88,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']],function(){
 	'as' => 'ajax.5'
 	]);
 	Route::post('/kuitansi/create','RekapKuitansiController@create');
+	Route::get('/kuitansi/{id}/information','RekapKuitansiController@information');
 	Route::get('/kuitansi/{kuitansi}/edit','RekapKuitansiController@edit');
 	Route::post('/kuitansi/{kuitansi}/update','RekapKuitansiController@update');
 	Route::get('/kuitansi/{id}','RekapKuitansiController@delete');
@@ -98,6 +99,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']],function(){
 	'uses' => 'TransaksiController@get',
 	'as' => 'ajax.6'
 	]);
+	Route::get('/transaksi/{id}/info','TransaksiController@information');
 	Route::post('/transaksi/create','TransaksiController@create');
 	Route::get('/transaksi/{transaksi}/edit','TransaksiController@edit');
 	Route::post('/transaksi/{transaksi}/update','TransaksiController@update');
