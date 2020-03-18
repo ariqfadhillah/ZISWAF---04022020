@@ -32,8 +32,6 @@
 										<th class="col-md-1">Nomer Kuitansi</th>
 										<th class="col-md-3">Nama Pemberi</th>
 										<th class="col-md-3">Nama Muzakki / Atas nama</th>
-										<th>Aksi</th>
-										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -70,7 +68,7 @@
 									{{csrf_field()}}
 									<div class="form-group{{$errors->has('nama_muzakki') ? ' has-error' : ''}}">
 										<label for="exampleInputEmail1">Nama Muzakki</label>
-										<input name="nama_muzakki" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}">
+										<input name="nama_muzakki" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}" required>
 										@if($errors->has('nama_muzakki'))
 										<span class="help-block">{{$errors->first('nama_muzakki')}}</span>
 										@endif
@@ -104,8 +102,7 @@
             {data: 'tgl_setor', name: 'tgl_setor'},
             {data: 'number_kuitansi', name: 'number_kuitansi'},
             {data: 'nama_penyetor', name: 'nama_penyetor'},
-            {data: 'nama_muzakki', name: 'nama_muzakki'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'nama_muzakki', name: 'nama_muzakki'}
 
         ]
 	});

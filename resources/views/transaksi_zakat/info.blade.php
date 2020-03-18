@@ -12,9 +12,7 @@
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-heading">
-							@foreach($data_fore as $id)
-							<h3 class="panel-title">Dengan Nomer Kuitansi ({{$id->number_kuitansi}})</h3>
-							@endforeach
+							<h3 class="panel-title">Dengan Nomer Kuitansi ({{$id}})</h3>
 							<div class="right">
 								<!-- Button trigger modal -->
 								<!-- <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button> -->
@@ -71,7 +69,7 @@
 							{{csrf_field()}}
 							<div class="form-group{{$errors->has('nama_petugas') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Nama Petugas Rekap</label>
-								<input name="nama_petugas" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Masukan Nama Petugas Rekap" value="{{old('nama_petugas')}}">
+								<input name="nama_petugas" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Masukan Nama Petugas Rekap" value="{{old('nama_petugas')}}" required>
 								@if($errors->has('nama_petugas'))
 								<span class="help-block">{{$errors->first('nama_petugas')}}</span>
 								@endif
@@ -79,7 +77,7 @@
 
 							<div class="form-group{{$errors->has('email') ? ' has-error' : ''}}">
 								<label for="exampleInputPassword1">Email</label>
-								<input name="email" type="email" class="form-control"aria-describedby="emailHelp" placeholder="Email" value="{{old('email')}}">
+								<input name="email" type="email" class="form-control"aria-describedby="emailHelp" placeholder="Email" value="{{old('email')}}" required>
 								@if($errors->has('email'))
 								<span class="help-block">{{$errors->first('email')}}</span>
 								@endif
@@ -111,11 +109,12 @@
 
 <script>
 	$(document).ready( function () {
+		// var params = "{{url('getdatatransaksi')}}" + "/" + "{{$id}}";
 		$('#tables').DataTable({
 			processing: true,
 			responsive: true,
 			serverSide: true,
-			ajax: "{{route('ajax.6')}}",
+			ajax: "{{url('getdatatransaksi')}}" + "/" + "{{$id}}",
 			columns: [
             // or just disable search since it's not really searchable. just add searchable:false
             {data: 'tgl_setor', name: 'tgl_setor', orderable: true, searchable: true },
@@ -125,8 +124,7 @@
             {data: 'bentuk_ziswaf', name: 'bentuk_ziswaf', orderable: true, searchable: true },
             {data: 'nilai_ziswaf', name: 'nilai_ziswaf', orderable: true, searchable: true },
             {data: 'satuan_ziswaf', name: 'satuan_ziswaf', orderable: true, searchable: true },
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            {data: 'delete', name: 'delete', orderable: false, searchable: false}
+            {data: 'action', name: 'action', orderable: false, searchable: false}
 
             ]
            });

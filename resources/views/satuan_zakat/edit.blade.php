@@ -14,7 +14,7 @@
 								{{csrf_field()}}
 								<div class="form-group{{$errors->has('satuan_ziswaf') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Satuan Zakat</label>
-								<input name="satuan_ziswaf" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Satuan Zakat" value="{{$satuan_ziswaf->satuan_ziswaf}}">
+								<input name="satuan_ziswaf" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Satuan Zakat" value="{{$satuan_ziswaf->satuan_ziswaf}}" required>
 								@if($errors->has('satuan_ziswaf'))
 								<span class="help-block">{{$errors->first('satuan_ziswaf')}}</span>
 								@endif

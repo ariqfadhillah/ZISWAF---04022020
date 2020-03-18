@@ -127,6 +127,7 @@ class RekapKuitansiController extends Controller
       $zakat->kuitansi_id                   = $request->kuitansi_id;
       $zakat->jenis_ziswaf_id               = $request->jenis_ziswaf_id;
       $zakat->satuan_ziswaf_id              = $request->satuan_ziswaf_id;
+      $zakat->bentuk_ziswaf              = $request->bentuk_ziswaf;
       $zakat->nilai_ziswaf                  = $request->nilai_ziswaf;
       $zakat->save();
 
@@ -138,7 +139,7 @@ class RekapKuitansiController extends Controller
       return redirect('/kuitansi')->with('sukses','Data berhasil di input');
    }
 
-   public function delete($id)
+   public function delete($number_kuitansi)
    {  
       // ini saya punya serial number. jadi ane pingin ketika hapus diklik pada nomer yg sama. nanti id muzakki ikut
       // $muzakki = Muzakki::find($id);
@@ -147,20 +148,19 @@ class RekapKuitansiController extends Controller
       // Logika nya keluarkan get agar semuanya ke cetak
       // fitur deletenya akan terus dijalankan,hingga perulangan habis
 
-      $rekap = RekapKuitansi::where('number_kuitansi', $id)->get();
+      $rekap = RekapKuitansi::where('number_kuitansi', $number_kuitansi)->get();
 
       foreach($rekap as $data){
-         $muzakki = Muzakki::find($data->muzakki_id);
+         $muzakki = Muzakki::find($data->muzakki_id)->delete();
+         $ziswaf = Transaksi::where('kuitansi_id',$data->id)->first()->delete();
          
          $data->delete();
-         $muzakki->delete();
       }
-
 
       return redirect()->back()->with('sukses','Data berhasil di delete');
    }
 
-   public function edit(Kuitansi $kuitansi)
+   public function edit(Request $kuitansi)
    {
       return view('kuitansi/edit',['kuitansi' => $kuitansi]);
    }

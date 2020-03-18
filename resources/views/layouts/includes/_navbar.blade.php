@@ -13,7 +13,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src="
-								@if(auth()->user()->role== 'siswa')
+								@if(auth()->user()->role== 'user')
 								{{auth()->user()->petugas->getAvatar()}}
 								@else
 								/images/default.jpg
@@ -21,7 +21,7 @@
 								" class="img-circle" alt="Avatar">
 								<span>{{auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="profilsaya"><i class="lnr lnr-user"></i> <span>Profil Saya</span></a></li>
+								<li><a href="/changePassword"><i class="lnr lnr-user"></i> <span>Profil Saya</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>

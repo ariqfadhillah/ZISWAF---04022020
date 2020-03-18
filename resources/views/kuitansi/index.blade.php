@@ -152,6 +152,13 @@
 									@endif
 								</div>
 							</div>
+							<div class="form-group{{$errors->has('bentuk_ziswaf') ? ' has-error' : ''}}">
+								<label for="exampleInputEmail1">Bentuk Zakat</label>
+								<input name="bentuk_ziswaf" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Bentuk Zakatnya" value="{{old('bentuk_ziswaf')}}" required>
+								@if($errors->has('bentuk_ziswaf'))
+								<span class="help-block">{{$errors->first('nama_penyetor')}}</span>
+								@endif
+							</div>
 							  <small id="tombol" class="text-muted"><a href="#">klik tambah disini</a></small><br><br>
 							<hr><h5>Rincian Muzakki</h5><hr>	
 							<div class="form-group{{$errors->has('nama_penyetor') ? ' has-error' : ''}}">

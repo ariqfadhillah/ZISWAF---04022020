@@ -16,10 +16,11 @@ class AuthController extends Controller
     {
     	if(Auth::attempt($request->only('email','password'))){
             return Redirect::intended('/kuitansi'); //see this line
-            
+
         }else{
                 
             return Redirect::to('/login')->with('error', 'Invalid username or password')->withInput();
+
         }
     }
 

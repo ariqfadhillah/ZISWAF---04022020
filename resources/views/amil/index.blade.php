@@ -67,7 +67,7 @@
 									{{csrf_field()}}
 									<div class="form-group{{$errors->has('nama_amil') ? ' has-error' : ''}}">
 										<label for="exampleInputEmail1">Nama Amil</label>
-										<input name="nama_amil" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Amil" value="{{old('nama_amil')}}">
+										<input name="nama_amil" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama Amil" value="{{old('nama_amil')}}" required>
 										@if($errors->has('nama_amil'))
 										<span class="help-block">{{$errors->first('nama_amil')}}</span>
 										@endif

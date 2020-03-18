@@ -33,6 +33,9 @@ Route::get('/','RekapKuitansiController@index');
 	Route::get('/petugas/{petugas}/edit','PetugasController@edit');
 	Route::post('/petugas/{petugas}/update','PetugasController@update');
 	Route::get('/petugas/{petugas}/delete','PetugasController@delete');
+	Route::get('/changePassword','PetugasController@showChangePasswordForm');
+	Route::post('/changePassword','PetugasController@changePassword')->name('changePassword');
+
 });	
 
 Route::group(['middleware' => ['auth','checkRole:admin,petugas']],function(){
@@ -99,6 +102,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']],function(){
 	'uses' => 'TransaksiController@get',
 	'as' => 'ajax.6'
 	]);
+	Route::get('getdatatransaksi/{id}',[ 'uses' => 'TransaksiController@getSearch' ]);
 	Route::get('/transaksi/{id}/info','TransaksiController@information');
 	Route::post('/transaksi/create','TransaksiController@create');
 	Route::get('/transaksi/{transaksi}/edit','TransaksiController@edit');

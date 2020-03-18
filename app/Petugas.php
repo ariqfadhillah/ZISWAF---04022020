@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Petugas extends Model
 {
  protected $table = 'petugas';
- protected $fillable = ['nama_petugas','user_id',];
+ protected $fillable = ['id','nama_petugas','user_id',];
 
  public function rekapkuitansi()
  {

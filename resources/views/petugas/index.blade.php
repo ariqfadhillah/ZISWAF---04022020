@@ -62,7 +62,7 @@
 							{{csrf_field()}}
 							<div class="form-group{{$errors->has('nama_petugas') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Nama Petugas Rekap</label>
-								<input name="nama_petugas" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Masukan Nama Petugas Rekap" value="{{old('nama_petugas')}}">
+								<input name="nama_petugas" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Masukan Nama Petugas Rekap" value="{{old('nama_petugas')}}" required>
 								@if($errors->has('nama_petugas'))
 								<span class="help-block">{{$errors->first('nama_petugas')}}</span>
 								@endif
@@ -70,7 +70,7 @@
 
 							<div class="form-group{{$errors->has('email') ? ' has-error' : ''}}">
 								<label for="exampleInputPassword1">Email</label>
-								<input name="email" type="email" class="form-control"aria-describedby="emailHelp" placeholder="Email" value="{{old('email')}}">
+								<input name="email" type="email" class="form-control"aria-describedby="emailHelp" placeholder="Email" value="{{old('email')}}" required>
 								@if($errors->has('email'))
 								<span class="help-block">{{$errors->first('email')}}</span>
 								@endif
@@ -78,7 +78,11 @@
 
 							<div class="form-group{{$errors->has('password') ? ' has-error' : ''}}">
 								<label for="exampleInputPassword1">Password</label>
-								<input name="password" type="password" class="form-control"aria-describedby="passwordHelp" placeholder="Password" value="{{old('password')}}" required>
+
+								<input name="password" type="password" class="form-control" id="pass_log_id" placeholder="Masukan Password" value="{{old('password')}}" required>
+
+                 				<span toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password" style="margin-right: 410px;">Show/Hide</span>
+								
 								@if($errors->has('password'))
 								<span class="help-block">{{$errors->first('password')}}</span>
 								@endif
@@ -99,7 +103,18 @@
 @stop
 
 @section('footer')
+<script>
+  $("body").on('click', '.toggle-password', function() {
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $("#pass_log_id");
+    if (input.attr("type") === "password") {
+      input.attr("type", "text");
+    } else {
+      input.attr("type", "password");
+    }
 
+  });
+</script>
 <script>
 	$(document).ready( function () {
 		$('#tables').DataTable({

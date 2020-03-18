@@ -10,13 +10,13 @@
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-body">
-							<form action="/jenis_ziswaf/{{$jenis_ziswaf->id}}/update" method="post" enctype="multipart/form-data">
+							<form action="/kuitansi/{kuitansi}/update" method="post" enctype="multipart/form-data">
 								{{csrf_field()}}
-								<div class="form-group{{$errors->has('jenis_ziswaf') ? ' has-error' : ''}}">
+								<div class="form-group{{$errors->has('name') ? ' has-error' : ''}}">
 								<label for="exampleInputEmail1">Jenis Zakat</label>
-								<input name="jenis_ziswaf" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Jenis Zakatnya" value="{{$jenis_ziswaf->jenis_ziswaf}}">
-								@if($errors->has('jenis_ziswaf'))
-								<span class="help-block">{{$errors->first('jenis_ziswaf')}}</span>
+								<input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Jenis Zakatnya" value="{{$name->name}}" required>
+								@if($errors->has('name'))
+								<span class="help-block">{{$errors->first('name')}}</span>
 								@endif
 							</div>
 							</div>

@@ -2,10 +2,12 @@
   
 namespace App\Http\Controllers;
 
+use Hash;
 use App\Petugas;
 use App\RekapKuitansi;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PetugasController extends Controller
 {
@@ -40,7 +42,7 @@ class PetugasController extends Controller
   $user->role ='petugas';
   $user->name = $request->nama_petugas;
   $user->email = $request->email;
-   $user->password = bcrypt('rahasia'); //trus tambahkan slice (\)
+   $user->password = bcrypt($request->get('password')); //trus tambahkan slice (\)
    $user->remember_token = \Str::random(60); //kalo di laravel 6 kebawah pakainya underscore(_)
    $user->save();
    
@@ -62,9 +64,45 @@ class PetugasController extends Controller
    return redirect('/petugas')->with('sukses','Data berhasil di update');
   }
 
-  public function delete(Petugas $petugas)
+  public function delete($petugas)
  { 
-  $petugas->delete();
+      $petugas = Petugas::where('id', $petugas)->get();
+      foreach ($petugas as $data) {
+        $user = User::find($data->user_id);
+
+      $data->delete();
+      $user->delete();
+      }
   return redirect('/petugas')->with('sukses','Data berhasil di delete');
  }
+ public function showChangePasswordForm()
+        {
+        return view('user.changepassword');
+    }
+
+    public function changePassword(Request $request){
+
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Password yang kamu masukan tidak benar. Please try again.");
+        }
+
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            //Current password and new password are same
+            return redirect()->back()->with("error","Password baru tidak boleh sama dengan yang lama. Please choose a different password.");
+        }
+
+        $validatedData = $request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|string|min:6|same:new-password_confirmation',
+        ]);
+
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+
+        return redirect()->back()->with("success","Berhasil diganti !");
+
+    }
 }
