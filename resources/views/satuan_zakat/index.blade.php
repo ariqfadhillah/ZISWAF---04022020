@@ -20,7 +20,7 @@
 							<h3 class="panel-title">Master Satuan Zakat</h3>
 							<div class="right">
 								<!-- Button trigger modal -->
-								<button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button>
+								<button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal">Tambah</i></button>
 							</div>
 							
 						</div>
