@@ -3,11 +3,15 @@
 				<a href="/"><img src="{{asset('admin/assets/img/ziswaf.png')}}" alt="Ziswaf Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
+				
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+					
 				</div>
 				
 				<div id="navbar-menu">
+
+					
 					<ul class="nav navbar-nav navbar-right">
 						
 						<li class="dropdown">

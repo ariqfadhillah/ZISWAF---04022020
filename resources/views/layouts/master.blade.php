@@ -25,6 +25,7 @@
 		.ck-editor__editable_inline {
 			    min-height: 300px;
 			}
+		
 	</style>
 	@yield('header')
 </head>

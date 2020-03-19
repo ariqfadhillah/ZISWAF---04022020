@@ -8,7 +8,7 @@
 <div class="main">
 	<div class="main-content ">
 		
-		<section id="breaking-news" class="breaking-news breaking-news_hide breaking-news_fixed-top" data-component="desktop:breaking-news" data-component-name="desktop:breaking-news" style="top: 90px;"><div class="breaking-news__container"><a class="breaking-news__click" href="http://covid-19.id/"><span class="breaking-news__title">HEADLINE HARI INI</span><span class="breaking-news__content"><marquee behavior="" direction="">STATUS DARURAT CORONA COVID-19 DIPERPANJANG HINGGA 29 MEI 2020, LANGKAH TEPAT?</marquee></span></a></div></section>
+		<div class="breaking-news__container"><a class="breaking-news__click" href="https://corona.jakarta.go.id/"><span class="breaking-news__title">HEADLINE HARI INI</span><span class="breaking-news__content"><marquee behavior="" direction="">STATUS DARURAT CORONA COVID-19 DIPERPANJANG HINGGA 29 MEI 2020, LANGKAH TEPAT?</marquee></span></a></div>
 
 		@if(session('sukses'))
 		<div class="alert alert-success" role="alert">
