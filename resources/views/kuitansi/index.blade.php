@@ -234,11 +234,11 @@
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			//text box increment
-			$(wrapper).append('<div><input name="nama_muzakki[]" type="text" class="form-control" id="nama-'+ x++ +'" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}" required><a href="#" class="delete btn-sm btn-danger">cancel here</a></div>'); //add input box
+			$(wrapper).append('<div><input name="nama_muzakki[]" type="text" class="form-control" id="nama-'+ x++ +'" aria-describedby="emailHelp" placeholder="Masukan Nama Muzakki" value="{{old('nama_muzakki')}}" required><a href="#" class="delete btn-sm btn-danger" id="remove_field">cancel here</a></div>'); //add input box
 		}
 	});
 	
-	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+	$(wrapper).on("click","#remove_field", function(e){ //user click on remove text
 		e.preventDefault(); $(this).parent('').remove(); x--;
 	})
 });
