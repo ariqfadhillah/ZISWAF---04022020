@@ -23,7 +23,9 @@
 							<table class="table table-hover" id="tables">
 								<thead>
 									<tr>
-										<th class="col-md-12">Nama Petugas</th>
+										<th class="col-md">Nama Petugas</th>
+										<th class="col-md">Role</th>
+
 										<th>Aksi</th>
 										<th></th>
 									</tr>
@@ -125,6 +127,7 @@
 			columns: [
             // or just disable search since it's not really searchable. just add searchable:false
             {data: 'nama_petugas', name: 'nama_petugas', orderable: true, searchable: true },
+            {data: 'role', name: 'role', orderable: true, searchable: true },
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'delete', name: 'delete', orderable: false, searchable: false}
 

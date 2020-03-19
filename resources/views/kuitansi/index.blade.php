@@ -7,6 +7,9 @@
 
 <div class="main">
 	<div class="main-content ">
+		
+		<section id="breaking-news" class="breaking-news breaking-news_hide breaking-news_fixed-top" data-component="desktop:breaking-news" data-component-name="desktop:breaking-news" style="top: 90px;"><div class="breaking-news__container"><a class="breaking-news__click" href="http://covid-19.id/"><span class="breaking-news__title">HEADLINE HARI INI</span><span class="breaking-news__content"><marquee behavior="" direction="">STATUS DARURAT CORONA COVID-19 DIPERPANJANG HINGGA 29 MEI 2020, LANGKAH TEPAT?</marquee></span></a></div></section>
+
 		@if(session('sukses'))
 		<div class="alert alert-success" role="alert">
 			{{session('sukses')}}
@@ -20,7 +23,7 @@
 							<h3 class="panel-title">Rekap Kuitansi ZISWAF</h3>
 							<div class="right">
 								<!-- Button trigger modal -->
-								<button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button>
+								<button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal">Tambah</i></button>
 							</div>
 
 						</div>

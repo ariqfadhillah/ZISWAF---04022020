@@ -30,8 +30,6 @@
 										<th class="col-md-2">Bentuk</th>
 										<th class="col-md-2">Nilai</th>
 										<th class="col-md-2">Satuan</th>
-										<th>Aksi</th>
-										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -123,8 +121,8 @@
             {data: 'jenis_ziswaf', name: 'jenis_ziswaf', orderable: true, searchable: true },
             {data: 'bentuk_ziswaf', name: 'bentuk_ziswaf', orderable: true, searchable: true },
             {data: 'nilai_ziswaf', name: 'nilai_ziswaf', orderable: true, searchable: true },
-            {data: 'satuan_ziswaf', name: 'satuan_ziswaf', orderable: true, searchable: true },
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'satuan_ziswaf', name: 'satuan_ziswaf', orderable: true, searchable: true }
+            // {data: 'action', name: 'action', orderable: false, searchable: false}
 
             ]
            });

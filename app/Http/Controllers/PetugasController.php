@@ -19,11 +19,15 @@ class PetugasController extends Controller
 
  public function get()
  {
-  $petugas= Petugas::select('petugas.*');
+  $petugas= Petugas::join('users','petugas.user_id','=','users.id')
+  ->select('petugas.*','users.role');
 
   return \DataTables::eloquent($petugas)
   ->addColumn('nama_petugas', function($s){
    return $s->nama_petugas;
+  })
+  ->addColumn('role', function($s){
+   return $s->role;
   })
   ->addColumn('action', function($s){
    return '<a href="/petugas/'.$s->id.'/edit" class="btn btn-warning btn-sm">Edit</a>';
