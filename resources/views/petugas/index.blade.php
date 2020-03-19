@@ -26,8 +26,10 @@
 										<th class="col-md">Nama Petugas</th>
 										<th class="col-md">Role</th>
 
-										<th>Aksi</th>
-										<th></th>
+										<!-- <th>Aksi</th>
+										<th></th> -->
+
+										<!-- nantinya hanya Admin yang bisa merubah dan menghapus -->
 									</tr>
 								</thead>
 								<tbody>
@@ -127,9 +129,9 @@
 			columns: [
             // or just disable search since it's not really searchable. just add searchable:false
             {data: 'nama_petugas', name: 'nama_petugas', orderable: true, searchable: true },
-            {data: 'role', name: 'role', orderable: true, searchable: true },
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            {data: 'delete', name: 'delete', orderable: false, searchable: false}
+            {data: 'role', name: 'role', orderable: true, searchable: true }
+            // {data: 'action', name: 'action', orderable: false, searchable: false},
+            // {data: 'delete', name: 'delete', orderable: false, searchable: false}
 
             ]
            });
