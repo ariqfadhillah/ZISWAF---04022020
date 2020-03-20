@@ -34,6 +34,7 @@ class RekapKuitansiController extends Controller
       ->join('amil', 'kuitansi.amil_id', '=', 'amil.id')
       ->join('petugas', 'kuitansi.petugas_id', '=', 'petugas.id')
       ->select('kuitansi.tgl_setor','kuitansi.number_kuitansi','kuitansi.nama_penyetor','kuitansi.alamat_penyetor','muzakki.nama_muzakki', 'amil.nama_amil', 'petugas.nama_petugas','kuitansi.id')
+      // rencananya ini mau saya buat menjadi pake groupBy per nomer kuitansi_id
       ->get();
       
       // $kuitansi                               = RekapKuitansi::select('kuitansi.*');

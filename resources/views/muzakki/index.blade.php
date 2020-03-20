@@ -17,7 +17,7 @@
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">Data Muzakki</h3>
+							<h3 class="panel-title">Data Muzakki (saat ini)</h3>
 							<div class="right">
 								<!-- Button trigger modal -->
 								<!-- <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModal"></i></button> -->

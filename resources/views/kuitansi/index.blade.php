@@ -8,8 +8,8 @@
 <div class="main">
 	<div class="main-content ">
 		
-		<div class="breaking-news__container"><a class="breaking-news__click" href="https://corona.jakarta.go.id/"><span class="breaking-news__title">HEADLINE HARI INI</span><span class="breaking-news__content"><marquee behavior="" direction="">STATUS DARURAT CORONA COVID-19 DIPERPANJANG HINGGA 29 MEI 2020, LANGKAH TEPAT?</marquee></span></a></div>
-
+		<!-- <div class="breaking-news__container"><a class="breaking-news__click" href="https://corona.jakarta.go.id/"><span class="breaking-news__title">HEADLINE HARI INI</span><span class="breaking-news__content"><marquee behavior="" direction="">STATUS DARURAT CORONA COVID-19 DIPERPANJANG HINGGA 29 MEI 2020, LANGKAH TEPAT?</marquee></span></a></div>
+ -->
 		@if(session('sukses'))
 		<div class="alert alert-success" role="alert">
 			{{session('sukses')}}

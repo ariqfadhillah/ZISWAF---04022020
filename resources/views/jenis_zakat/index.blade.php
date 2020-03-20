@@ -29,8 +29,10 @@
 								<thead>
 									<tr>
 										<th class="col-md-12">Jenis Zakat</th>
-										<th>Aksi</th>
-										<th></th>
+										<!-- <th>Aksi</th>
+										<th></th> -->
+
+										<!-- nantinya hanya Admin yang bisa merubah dan menghapus -->
 									</tr>
 								</thead>
 								<tbody>
@@ -97,9 +99,9 @@
             ajax: "{{route('ajax.2')}}",
             columns: [
             // or just disable search since it's not really searchable. just add searchable:false
-            {data: 'jenis_ziswaf', name: 'jenis_ziswaf'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            {data: 'delete', name: 'delete', orderable: false, searchable: false}
+            {data: 'jenis_ziswaf', name: 'jenis_ziswaf'}
+            // {data: 'action', name: 'action', orderable: false, searchable: false},
+            // {data: 'delete', name: 'delete', orderable: false, searchable: false}
 
         ]
 	});
